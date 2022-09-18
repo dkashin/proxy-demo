@@ -45,7 +45,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-db/
 dist/
 downloads/
 eggs/
@@ -99,6 +98,7 @@ sqlite3.db
 db.sqlite3
 db.sqlite3-journal
 migrations/
+db/
 
 # Flask stuff:
 instance/
