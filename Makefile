@@ -5,7 +5,7 @@ CONTAINER = ProxyDemo
 
 build:
 	@echo "Building docker image(s)..."
-	docker-compose build --force-rm --no-cache $(CONTAINER)
+	docker-compose build --force-rm $(CONTAINER)
 	docker-compose ps $(CONTAINER)
 	@echo "$(CONTAINER) build."
 
