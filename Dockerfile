@@ -14,6 +14,6 @@ RUN pip install --user -r requirements.txt
 RUN mkdir -p logs
 RUN mkdir -p db
 
-EXPOSE 8080
+EXPOSE 8077
 
-CMD uwsgi --http :8080 proxy_uwsgi.ini
+CMD uwsgi --http :8077 proxy_uwsgi.ini
