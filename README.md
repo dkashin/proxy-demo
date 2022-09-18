@@ -22,7 +22,7 @@ For older Flask versions, you can use FLASK_ENV to enable development config:
 
     $ FLASK_ENV=Development python3 -m proxy.uwsgi
 
-Status page should be available now: http://localhost:8077/api/v1/status
+Status page should be available now: http://<ip_or_domain>:8077/api/v1/status
 
 Default server public port is 8077.
 
@@ -47,7 +47,7 @@ Start proxy:
 
     $ make start
 
-Status page should be available now: http://localhost:8077/api/v1/status
+Status page should be available now: http://<ip_or_domain>:8077/api/v1/status
 
 Stop proxy:
 
@@ -71,6 +71,31 @@ You can change it by setting environment variable HTTP_PORT via CLI:
     $ HTTP_PORT=7171 make test
 
 or via [.env](.env) file.
+
+
+## API
+
+Proxy status page:
+
+    $ [GET] /api/v1/status
+
+Proxy JWT injection:
+
+    $ [POST] /api/v1/proxy-jwt
+
+    Payload: { "payload": "sample_data" }
+    Returns: JSON with original + injected JWT headers, original payload
+
+Proxy dummy echo service:
+
+    $ [POST] /api/v1/echo
+
+    Payload: { "payload": "sample_data" }
+    Returns: JSON with original headers and original payload
+
+CURL testing example:
+
+    $ curl http://localhost:8077/api/v1/proxy-jwt -H "Content-Type: application/json" -d '{ "payload": "sample_data" }' -v | jq .
 
 
 ## Automatic tests
