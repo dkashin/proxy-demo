@@ -16,6 +16,8 @@ Run server:
 
     $ python3 -m proxy.uwsgi
 
+Status page should be available now: http://localhost:8077/api/v1/status
+
 Default server public port is 8077.
 
 You can change it by setting environment variable HTTP_PORT via CLI:
@@ -23,8 +25,6 @@ You can change it by setting environment variable HTTP_PORT via CLI:
     $ HTTP_PORT=7171 python3 -m proxy.uwsgi
 
 or via [.env](.env) file.
-
-Status page should be available now: http://localhost:8077/api/v1/status
 
 
 ## Docker compose management
