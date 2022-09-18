@@ -83,7 +83,9 @@ Logs are stored to the 'logs' dir inside container.
 Logs dir is also exposed via docker-compose "volumes", so you can check log files directly at 'logs' dir where docker-compose is called from.
 
 system.log - Contains system events and requests data
+
 db.log - Contains database related events
+
 uwsgi.log - Contains uWSGI HTTP server events
 
 ## Documentation
