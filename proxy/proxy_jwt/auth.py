@@ -110,6 +110,7 @@ class AuthManager(object):
                 'data': data
             }
             self.logger.info(f'[AuthManager] JWT upstream response: {response}')
+            raise
             return response, 200
         except RequestException as e:
             response = {

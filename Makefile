@@ -2,18 +2,23 @@
 CONTAINER = ProxyDemo
 HTTP_PORT = 8080
 
-.PHONY: run build restart logs test
+.PHONY: build start stop restart logs test
 
-run:build
+build:
+	@echo "Building docker image(s)..."
+	docker-compose build --force-rm --no-cache $(CONTAINER)
+	docker-compose ps $(CONTAINER)
+	@echo "$(CONTAINER) build."
+
+start:build
 	@echo "Starting docker-compose (up)..."
 	HTTP_PORT="$(HTTP_PORT)" docker-compose up --remove-orphans -d $(CONTAINER)
 	@echo "$(CONTAINER) started."
 
-build:
-	@echo "Building docker image(s)..."
-	HTTP_PORT="$(HTTP_PORT)" docker-compose build --force-rm --no-cache $(CONTAINER)
-	HTTP_PORT="$(HTTP_PORT)" docker-compose ps "$(CONTAINER)"
-	@echo "$(CONTAINER) build."
+stop:
+	@echo "Stopping docker-compose (down)..."
+	HTTP_PORT="$(HTTP_PORT)" docker-compose down
+	@echo "$(CONTAINER) stopped."
 
 restart:
 	@echo "Restarting docker-compose..."
@@ -32,4 +37,4 @@ test:
 	python3 -m unittest tests/test_*
 	@echo "$(CONTAINER) tests completed."
 
-default: run
+default: start

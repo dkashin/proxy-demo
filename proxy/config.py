@@ -32,6 +32,8 @@ class AppConfig(object):
 
     # Flask debug mode enable/disable
     FLASK_DEBUG = True
+    # Testing server public HTTP port
+    HTTP_PORT_TEST = os.environ.get('HTTP_PORT_TEST')
 
     # JWT algorithm
     JWT_ALGORITHM = 'HS512'
