@@ -100,7 +100,6 @@ except OSError as error:
     pass
 
 # Init logger scope
-logger_scope = {}
-logger_init(app_config, logger_scope)
+logger_scope = logger_init(app_config, {})
 logger_system = logger_scope.get('system')
 

@@ -3,6 +3,7 @@
 import unittest, json
 
 from proxy.uwsgi import app
+from proxy.config import app_config
 
 app.testing = True
 

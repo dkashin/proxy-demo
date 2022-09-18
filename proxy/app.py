@@ -8,7 +8,7 @@ from flask import Flask
 from .config import app_config
 from .database import db_init
 
-import proxy.proxy_jwt
+import proxy.proxy_jwt, os
 
 
 def create_app():

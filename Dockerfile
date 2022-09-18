@@ -2,7 +2,7 @@ FROM python:3.10-alpine
 
 ENV PATH=/root/.local/bin:$PATH
 
-WORKDIR /proxy-demo
+WORKDIR /opt/proxy-demo
 
 COPY requirements.txt .
 COPY ./proxy ./proxy

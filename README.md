@@ -68,6 +68,7 @@ You can change it by setting environment variable HTTP_PORT via CLI:
 
     $ HTTP_PORT=7171 make build
     $ HTTP_PORT=7171 make start
+    $ HTTP_PORT=7171 make test
 
 or via [.env](.env) file.
 

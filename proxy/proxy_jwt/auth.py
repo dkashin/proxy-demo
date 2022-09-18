@@ -110,20 +110,17 @@ class AuthManager(object):
                 'data': data
             }
             self.logger.info(f'[AuthManager] JWT upstream response: {response}')
-            raise
             return response, 200
         except RequestException as e:
             response = {
                 'msg': 'API RequestException error'
             }
             self.logger.error(f'[AuthManager] Upstream RequestException error ({str(e)})')
-            raise
         except:
             response = {
                 'msg': 'API exception error'
             }
             self.logger.error('[AuthManager] Upstream generic exception error')
-            raise
 
         return response, 400
 

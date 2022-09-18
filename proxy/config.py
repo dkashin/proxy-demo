@@ -46,9 +46,7 @@ class AppConfig(object):
     UPSTREAM_URL = f'http://localhost:{UPSTREAM_URL_PORT}/api/v1/echo'
 
     # App root path
-    APP_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), os.path.pardir)
-    # App root parent dir
-#    SYSTEM_ROOT = os.path.join(APP_ROOT, os.path.pardir)
+    APP_ROOT = os.path.join(os.path.dirname(__file__), os.path.pardir)
 
     # Database dir
     DB_DIR = os.path.join(APP_ROOT, 'db')

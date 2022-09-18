@@ -6,10 +6,9 @@ CONTAINER = ProxyDemo
 build:
 	@echo "Building docker image(s)..."
 	docker-compose build --force-rm $(CONTAINER)
-	docker-compose ps $(CONTAINER)
 	@echo "$(CONTAINER) build."
 
-start:
+start: build
 	@echo "Starting docker-compose (up)..."
 	docker-compose up --remove-orphans -d $(CONTAINER)
 	@echo "$(CONTAINER) started."
@@ -22,7 +21,6 @@ stop:
 restart:
 	@echo "Restarting docker-compose..."
 	docker-compose restart $(CONTAINER)
-	docker-compose ps $(CONTAINER)
 	@echo "$(CONTAINER) restarted."
 
 logs:
