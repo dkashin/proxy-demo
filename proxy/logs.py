@@ -80,7 +80,10 @@ def logger_init(app_config, logger_scope):
     # DB logger
     logger_db = _LogManager.LogOpen('sqlalchemy', app_config.LOG_FILE_DB)
     LL = { 10: 'DEBUG', 20: 'INFO' }
-    logger_system.info(f'[SystemInit] Flask debug: {app_config.FLASK_DEBUG}')
+    try:
+        logger_system.info(f'[SystemInit] Flask debug: {app_config.FLASK_DEBUG}')
+    except:
+        logger_system.info(f'[SystemInit] Flask debug: False')
     logger_system.info(f'[SystemInit] Log level: {LL.get(app_config.LOG_LEVEL)}')
     logger_scope = {
         'null': logger_null,

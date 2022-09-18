@@ -31,7 +31,7 @@ from . import __file__
 class AppConfig(object):
 
     # Flask debug mode enable/disable
-    FLASK_DEBUG = True
+#    FLASK_DEBUG = True
 
     # Testing server public HTTP port
 
@@ -48,10 +48,10 @@ class AppConfig(object):
     # App root path
     APP_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), os.path.pardir)
     # App root parent dir
-    SYSTEM_ROOT = os.path.join(APP_ROOT, os.path.pardir)
+#    SYSTEM_ROOT = os.path.join(APP_ROOT, os.path.pardir)
 
     # Database dir
-    DB_DIR = os.path.join(SYSTEM_ROOT, 'db')
+    DB_DIR = os.path.join(APP_ROOT, 'db')
     # Database name
     DB_NAME = 'proxy.db'
     # Database URL
@@ -63,7 +63,7 @@ class AppConfig(object):
     # Logs file extension
     LOG_FILE_EXT = '.log'
     # Logs dir
-    LOG_DIR_ROOT = os.path.join(SYSTEM_ROOT, LOG_DIR_NAME)
+    LOG_DIR_ROOT = os.path.join(APP_ROOT, LOG_DIR_NAME)
     # System log file
     LOG_FILE_SYSTEM = os.path.join(LOG_DIR_ROOT, f'system{LOG_FILE_EXT}')
     # Database log file

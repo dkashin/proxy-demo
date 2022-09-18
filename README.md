@@ -18,6 +18,10 @@ Run server:
 
     $ python3 -m proxy.uwsgi
 
+For older Flask versions, you can use FLASK_ENV to enable development config:
+
+    $ FLASK_ENV=Development python3 -m proxy.uwsgi
+
 Status page should be available now: http://localhost:8077/api/v1/status
 
 Default server public port is 8077.
