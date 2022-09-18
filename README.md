@@ -95,6 +95,6 @@ uwsgi.log - Contains uWSGI HTTP server events
 
 ## Documentation
 
-Python documentation is avaiable:
+In-code documentation is avaiable:
 
     $ python3 -c "import proxy; help(proxy)"
