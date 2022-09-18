@@ -1,4 +1,10 @@
 
+'''
+SQLAlchemy database structure init
+
+db_session: variable contains sessions scope.
+'''
+
 import os
 
 from sqlalchemy import create_engine, event
@@ -21,7 +27,15 @@ Base.query = db_session.query_property()
 
 # DB init
 def db_init(app):
+    '''
+    Database init.
 
+    Creating DB structure in a declarative way using Base class metadata.
+    Removing session scope on app shutdown.
+
+    Arguments:
+        - app: Flask app
+    '''
     with app.app_context():
         import proxy.models
         Base.metadata.create_all(bind = engine)
@@ -36,6 +50,10 @@ def db_init(app):
 
 @event.listens_for(Engine, "connect")
 def set_sqlite_pragma(dbapi_connection, connection_record):
+    '''
+    Tuning SQLite3 database.
+    Definig custom PRAGMA settings on connect.
+    '''
     cursor = dbapi_connection.cursor()
 #  cursor.execute("PRAGMA foreign_keys = ON")
     cursor.execute("PRAGMA page_size = 4096")
@@ -44,4 +62,3 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
     cursor.execute("PRAGMA synchronous = NORMAL")
     cursor.execute("PRAGMA journal_mode = WAL")
     cursor.close()
-

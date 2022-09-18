@@ -1,5 +1,7 @@
+'''
+Service init.
+Importing views/blueprints/API.
+'''
 
-# Module init
-
-# API endpoints
+# API endpoints import
 from . import views

@@ -1,4 +1,8 @@
 
+'''
+Proxy auth tools.
+'''
+
 import datetime, hashlib, jwt, requests, json
 
 from flask import jsonify
@@ -13,6 +17,15 @@ from proxy.config import app_config
 # Auth management class
 class AuthManager(object):
 
+    '''
+    AuthManager() class provide proxy service tools:
+     - JWT tokens encoding and injection
+     - Proxy requests DB storage
+     - HTTP echo service for upstream testing
+
+     Arguments:
+        - logger: logging.getLogger() object
+    '''
 
     # Class init
     def __init__(self, logger = None):
@@ -21,6 +34,14 @@ class AuthManager(object):
 
     # Create JWT token(s)
     def jwt_token(self, user = None):
+        '''
+        JWT encoding
+
+        Arguments:
+            - user: <str>
+        Returns:
+            - JWT <str>
+        '''
         utc_time_now = datetime.datetime.utcnow()
         utc_time_now_ts = utc_time_now.timestamp()
         headers = { 'alg': app_config.JWT_ALGORITHM, 'typ': 'JWT' }
@@ -41,6 +62,13 @@ class AuthManager(object):
 
     # Store JWT token
     def request_store(self, ip = None, token = None):
+        '''
+        Store request data to database.
+
+        Arguments:
+            - ip: <str> IP address from request
+            - token: <str> JWT str
+        '''
         req_data = {
             'username': 'username',
             'ip_address': ip,
@@ -54,6 +82,15 @@ class AuthManager(object):
 
 
     def proxy(self, request = None):
+        '''
+        Proxy HTTP request. Add JWT header to original request.
+        Forwarding the updated request to uplink defined by UPSTREAM_URL variable.
+
+        Arguments:
+            - request: Flask request object
+        Returns:
+            - response (data <str>, code <int>) tuple
+        '''
         token = self.jwt_token(user = 'username')
         self.request_store(ip = request.remote_addr, token = token)
         self.logger.info(f'[AuthManager] JWT upstream request: IP {request.remote_addr}, JWT token: {token}')
@@ -91,6 +128,15 @@ class AuthManager(object):
 
 
     def echo(self, request = None):
+        '''
+        HTTP request echo dummy.
+        Convert HTTP headers and payload to dict and send JSON wrapped response.
+
+        Arguments:
+            - request: Flask request object
+        Returns:
+            - response (data <str>, code <int>) tuple
+        '''
         response = {
             'headers': [ dict(request.headers) ],
             'data': request.get_json()

@@ -1,10 +1,32 @@
 
-import os
-from . import __file__
-
 '''
 Application configuration.
+
+JWT data for token generation:
+    JWT_ALGORITHM: <string> JWT Algorithm (default=HS512)
+    JWT_SECRET_KEY: <string> JWT secret key
+
+Proxy upstream URL:
+    UPSTREAM_URL: <string> Default = local dummy echo HTTP endpoint
+
+Database:
+    DB_DIR: <string> Database directory name
+    DB_NAME: <string> Database name
+    SQLALCHEMY_DATABASE_URI: <string> Complete DB path, could be any DB type supported by SQLAlchemy ORM
+
+Log variables:
+    LOG_DIR_NAME: <string> Log directory name
+    LOG_FILE_EXT: <string> Log files extension
+    LOG_DIR_ROOT: <string> Log directory root path
+    LOG_FILE_SYSTEM: <string> System events log file path
+    LOG_FILE_DB: <string> Database log file path
+    LOG_SIZE_MAX: <int> Log files maximum size in bytes
+    LOG_LEVEL: <int> Log debug level, 10 = DEBUG, 20 = INFO
 '''
+
+import os
+
+from . import __file__
 
 class AppConfig(object):
 
