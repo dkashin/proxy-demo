@@ -34,14 +34,16 @@ class AppConfig(object):
     FLASK_DEBUG = True
 
     # Testing server public HTTP port
-#    HTTP_PORT_TEST = os.environ.get('HTTP_PORT_TEST')
 
     # JWT algorithm
     JWT_ALGORITHM = 'HS512'
     # JWT secret key
     JWT_SECRET_KEY = 'a9ddbcaba8c0ac1a0a812dc0c2f08514b23f2db0a68343cb8199ebb38a6d91e4ebfb378e22ad39c2d01d0b4ec9c34aa91056862ddace3fbbd6852ee60c36acbf'
+
+    # Upstream URL port
+    UPSTREAM_URL_PORT = os.environ.get('HTTP_PORT') or 8077
     # Upstream URL
-    UPSTREAM_URL = 'http://localhost:8080/api/v1/echo'
+    UPSTREAM_URL = f'http://localhost:{UPSTREAM_URL_PORT}/api/v1/echo'
 
     # App root path
     APP_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), os.path.pardir)
