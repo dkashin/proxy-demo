@@ -1,6 +1,5 @@
 
 CONTAINER = ProxyDemo
-HTTP_PORT = 8080
 
 .PHONY: build start stop restart logs test
 
@@ -10,25 +9,25 @@ build:
 	docker-compose ps $(CONTAINER)
 	@echo "$(CONTAINER) build."
 
-start:build
+start:
 	@echo "Starting docker-compose (up)..."
-	HTTP_PORT="$(HTTP_PORT)" docker-compose up --remove-orphans -d $(CONTAINER)
+	docker-compose up --remove-orphans -d $(CONTAINER)
 	@echo "$(CONTAINER) started."
 
 stop:
 	@echo "Stopping docker-compose (down)..."
-	HTTP_PORT="$(HTTP_PORT)" docker-compose down
+	docker-compose down
 	@echo "$(CONTAINER) stopped."
 
 restart:
 	@echo "Restarting docker-compose..."
-	HTTP_PORT="$(HTTP_PORT)" docker-compose restart $(CONTAINER)
-	HTTP_PORT="$(HTTP_PORT)" docker-compose ps $(CONTAINER)
+	docker-compose restart $(CONTAINER)
+	docker-compose ps $(CONTAINER)
 	@echo "$(CONTAINER) restarted."
 
 logs:
 	@echo "Displaying $(CONTAINER) logs..."
-	HTTP_PORT="$(HTTP_PORT)" docker-compose logs --tail 0 -f $(CONTAINER)
+	docker-compose logs --tail 0 -f $(CONTAINER)
 
 test:
 	@echo "Installing Python requirements..."

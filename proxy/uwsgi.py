@@ -13,4 +13,5 @@ app = create_app()
 
 # Local server setup. Debug/testing only.
 if __name__ == '__main__':
-	app.run(host = 'localhost', port = app_config.HTTP_PORT_TEST, debug = True)
+	HTTP_PORT = os.environ.get('HTTP_PORT') or 8077
+	app.run(host = 'localhost', port = HTTP_PORT, debug = True)

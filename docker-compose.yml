@@ -7,7 +7,7 @@ services:
         volumes:
             - ./logs:/logs
         ports:
-            - "${HTTP_PORT}:${HTTP_PORT}"
+            - "${HTTP_PORT:-8077}:${HTTP_PORT:-8077}"
         restart: always
         logging:
             driver: "json-file"
