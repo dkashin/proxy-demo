@@ -16,8 +16,14 @@ Run server:
 
     $ python3 -m proxy.uwsgi
 
-Default port for test server is 8077.
-You can change it in [.env](.env) variable HTTP_PORT_TEST.
+Default server public port is 8077.
+
+You can change it by setting environment variable HTTP_PORT=<int>:
+via CLI:
+
+    $ HTTP_PORT=7171 python3 -m proxy.uwsgi
+
+via [.env](.env) file.
 
 Status page should be available now: http://localhost:8077/api/v1/status
 
@@ -51,17 +57,17 @@ Display docker logs:
     $ make logs
 
 
-## Default port
+Default server public port is 8077.
 
-Default port for production server is 8077.
-You can change it by setting environment variable HTTP_PORT=<int> via CLI or using [.env](.env) file.
+You can change it by setting environment variable HTTP_PORT=<int>:
+via CLI:
 
-Examples:
+    $ HTTP_PORT=7171 make build
+    $ HTTP_PORT=7171 make start
+    $ HTTP_PORT=7171 make restart
+    $ HTTP_PORT=7171 make stop
 
-    $ HTTP_PORT=8077 make build
-    $ HTTP_PORT=8077 make start
-    $ HTTP_PORT=8077 make restart
-    $ HTTP_PORT=8077 make stop
+via [.env](.env) file.
 
 
 ## Automatic tests
