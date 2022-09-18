@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+
+    <p>
+        <br />App is up since: {{uptime.strftime('%d/%m/%Y, %H:%M:%S')}} UTC.
+    </p>
+    <p>
+        <br />Total requests processed: {{ req_count }}
+    </p>
+
+{% include 'footer.html' %}

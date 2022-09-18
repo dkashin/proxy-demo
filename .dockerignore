@@ -1,0 +1,16 @@
+**/__INTERNAL__
+**/*INTERNAL*
+**/*bak
+**/*.log
+**/*data
+#**/config.py
+**/*ok
+**/*old
+**/*ori
+**/sqlite.db
+**/sqlite3.db
+**/db.sqlite
+**/db.sqlite3
+**/__pycache__
+**/.[vw]env
+**/[vw]env

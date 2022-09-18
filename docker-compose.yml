@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+    ProxyDemo:
+        image: proxy-demo:latest
+        build:
+            context: .
+        volumes:
+            - ./logs:/logs
+        ports:
+            - ${HTTP_PORT}:${HTTP_PORT}
+        restart: always
+        logging:
+            driver: "json-file"
+            options:
+                max-file: "3"
+                max-size: "100m"
