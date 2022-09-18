@@ -18,8 +18,7 @@ Run server:
 
 Default server public port is 8077.
 
-You can change it by setting environment variable HTTP_PORT:
-via CLI:
+You can change it by setting environment variable HTTP_PORT via CLI:
 
     $ HTTP_PORT=7171 python3 -m proxy.uwsgi
 
@@ -59,8 +58,7 @@ Display docker logs:
 
 Default server public port is 8077.
 
-You can change it by setting environment variable HTTP_PORT:
-via CLI:
+You can change it by setting environment variable HTTP_PORT via CLI:
 
     $ HTTP_PORT=7171 make build
     $ HTTP_PORT=7171 make start
@@ -89,13 +87,7 @@ db.log - Contains database related events
 uwsgi.log - Contains uWSGI HTTP server events
 
 ## Documentation
-Please try from python console:
 
-    $ python3
-    >>> import proxy
-    >>> help(proxy)
+Python documentation is avaiable:
 
-Or try from command line:
-
-    $ python3 -c "import proxy; help(proxy.config)"
-
+    $ python3 -c "import proxy; help(proxy)"
