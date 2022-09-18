@@ -1,6 +1,7 @@
 # proxy-demo
 
 Demo project of HTTP proxy server with JWT encoded header injection support.
+Requirement: Python 3.10, SQLAlchemy, Flask, uWSGI
 
 &nbsp;  
 
@@ -10,7 +11,7 @@ Note that local server usage is for testing only!
 
 Install the requirements:
 
-    $ pip install -r requirements.txt
+    $ pip3 install -r requirements.txt
 
 Run server:
 
